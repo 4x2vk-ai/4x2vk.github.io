@@ -1,13 +1,25 @@
 ---
+layout: post
 title: "[Docker] Docker 설치 완벽 가이드"
 date: 2026-02-16 10:00:00 +0900
-categories: [BootCamp, TIL]
+description: Docker 설치 과정을 단계별로 안내하는 완벽 가이드입니다. 윈도우, WSL2, 우분투, 맥OS 모든 환경을 지원합니다.
+image: /assets/img/content/2025-07-31/image.png
+categories: [TIL]
 tags: [docker, installation, wsl, ubuntu, macos, windows]
-image: /assets/img/content/2026-02-16/docker-installation.png
 ---
 
 ## 서론
+
 도커(Docker)는 개발 환경을 구성하는 필수적인 도구입니다. 윈도우, WSL2, 우분투, 맥OS 등 다양한 환경에서 Docker를 설치하는 방법을 정리했습니다.
+
+이 가이드를 따르 하면 다음과 같이 할 수 있습니다:
+
+✅ 윈도우 환경에서 Docker 설치
+✅ WSL2를 통한 리눅스 환경 설정
+✅ 우분투 서버에 Docker 설치
+✅ 맥OS에서 Docker 사용
+
+Docker는 개발 환경을 표준화하고 일관성을 유지하는 강력한 도구입니다. 설치 후 다양한 프로젝트에서 사용해 보세요!
 
 ## 목차
 
@@ -23,54 +35,6 @@ image: /assets/img/content/2026-02-16/docker-installation.png
 ### WSL2 설치를 위한 사전 준비
 
 Windows 설정 앱 → 제어판 → 프로그램 및 기능 → Windows 기능 켜기/끄기 → Linux용 Windows 하위 시스템
-
-### Ubuntu 22.04 설치
-
-#### Docker 엔진 설치
-
-```bash
-# docker engine gpg 키 등록
-sudo apt-get update
-sudo apt-get install ca-certificates curl gnupg
-
-# Docker GPG 키 등록
-sudo install -m 0755 -d /etc/apt/keyrings curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
-# apt source 에 docker 관련 추가
-echo \
-  "deb [arch=$(dpkg --print-architecture)] signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-sudo apt-get update
-
-# docker engine 설치
-sudo apt-get install -y docker-ce docker-ce-cli containerd.io \
-  docker-buildx-plugin docker-compose-plugin docker-compose
-
-# docker 그룹에 현재 계정을 등록하여 sudo 없이 docker 명령을 사용하게 함
-sudo usermod -aG docker user
-sudo service docker restart
-```
-
-#### 새로운 터미널을 열고 확인
-
-```bash
-# docker version 확인
-docker --version
-
-# docker compose version 확인
-docker-compose --version
-```
-
-### Windows 에 Docker Desktop 설치
-
-https://docs.docker.com/desktop/setup/install/windows-install/
-
-### Windows Docker Desktop 설정
-
-우측 상단 톱니바퀴 → 오른쪽 Resources → WSL Integration → Apply&restart
 
 ---
 
@@ -202,11 +166,11 @@ newgrp docker
 
 ## 결론
 
-이 가이드를 따라 하면 다음과 같이 할 수 있습니다:
+이 가이드를 따르면 다음과 같이 할 수 있습니다:
 
 ✅ 윈도우 환경에서 Docker 설치
-✅ WSL2를 통한 Linux 환경 설정
+✅ WSL2를 통한 리눅스 환경 설정
 ✅ 우분투 서버에 Docker 설치
-✅ macOS에서 Docker 사용
+✅ 맥OS에서 Docker 사용
 
 Docker는 개발 환경을 표준화하고 일관성을 유지하는 강력한 도구입니다. 설치 후 다양한 프로젝트에서 사용해 보세요!
